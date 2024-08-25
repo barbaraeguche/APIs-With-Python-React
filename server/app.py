@@ -23,15 +23,15 @@ def add_grocery():
 @app.route('/groceries/update', methods=['PUT'])
 def update_grocery():
     gotten_json: dict = request.get_json()
-    prev_item = gotten_json.get('prevItem')
-    next_item = gotten_json.get('nextItem')
+    prev_item: str = gotten_json.get('prevItem')
+    next_item: str = gotten_json.get('nextItem')
 
-    update_response = gl.update_item(prev_item, next_item)
+    update_response: str = gl.update_item(prev_item, next_item)
     return jsonify({'msg': update_response}), 200
 
 @app.route('/groceries/delete/<item_to_delete>', methods=['DELETE'])
 def delete_grocery(item_to_delete: str):
-    delete_response = gl.delete_item(item_to_delete)
+    delete_response: str = gl.delete_item(item_to_delete)
     return jsonify({'msg': delete_response}), 200
 
 
